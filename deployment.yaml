@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fashiontrend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fashiontrend
+  template:
+    metadata:
+      labels:
+        app: fashiontrend
+    spec:
+      containers:
+      - name: fashiontrend
+        image: fashiontrend-docker:latest
+        ports:
+          - containerPort: 8080
+        imagePullPolicy: Always
+      imagePullSecrets:
+      - name: the-secret
+---
+# ... Service YAML definition
+apiVersion: v1
+kind: Service
+metadata:
+  name: fashiontrend
+spec:
+  selector:
+    app: fashiontrend
+  ports:
+    - protocol: "TCP"
+      port: 8080 # The port that the service is running on in the cluster
+      targetPort: 8080 # The port exposed by the service
+  type: LoadBalancer

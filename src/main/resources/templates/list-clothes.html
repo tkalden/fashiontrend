@@ -1,0 +1,48 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		<title>List Clothes</title>
+		
+		<link rel="stylesheet" 
+			href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" 
+			integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" 
+			crossorigin="anonymous" />
+	</head>
+	
+	<body>
+		
+		<div class="container">
+		
+			<h3>List Clothes</h3>
+			
+			<hr/>
+		
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Brand</th>
+						<th>Item</th>
+						<th>Color</th>
+						<th>Size</th>
+						<th>Gender</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="cloth: ${clothes}">
+						<td th:text="${cloth.id}" />
+						<td th:text="${cloth.brand}" />
+						<td th:text="${cloth.item}" />
+						<td th:text="${cloth.color}" />
+						<td th:text="${cloth.size}" />
+						<td th:text="${cloth.gender}" />
+					</tr>
+				</tbody>
+				
+			</table>
+		</div>
+		
+		
+	</body>
+	
+</html>
